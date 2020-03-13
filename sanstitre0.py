@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Fri Mar 13 14:43:03 2020
-
-@author: victo
-"""
 
 liste=dict()
 liste[1]={ 2 : 2, 3 : 7}
@@ -14,3 +9,12 @@ for x in liste.keys():
 
 #%%
 liste1=[[i for i in liste[j].values()] for j in liste.keys()]
+
+
+
+
+
+
+
+
+
