@@ -6,3 +6,5 @@ Created on Fri Mar 13 14:43:03 2020
 """
 
 print("Hello World")
+a=5
+print(a)
