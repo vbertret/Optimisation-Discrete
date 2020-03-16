@@ -36,5 +36,6 @@ if __name__ == "__main__":
     G1.ajouterArrete("A","B",2)
     G1.ajouterArrete("A","C",3)
     G1.ajouterArrete("A","B",10)
+    G1.ajouterArrete("B","A",2)
     
         
