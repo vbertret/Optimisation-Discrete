@@ -46,6 +46,21 @@ def colorier_noir(G,sommet,color):
         if sommet in G.ar[i].keys():
             if(all([color[j]=="b" for j in G.ar[i].keys()])):
                 colorier_noir(G,i,color)
+                
+def Kruskal(G):
+    arretetrie=minArrete(G)
+    Garbre=Graphe()
+    for sommet in G.so:
+        Garbre.ajouterSommet(sommet)
+    while(Garbre.nbA<Garbre.nbS-1):
+        arc=arretetrie.pop(0)
+        Garbre.ajouterArrete(arc[0],arc[1],arc[2])
+        if(detectionCycle(Garbre)):
+            print("test")
+            #enelver arrete
+        arretetrie.drop(0)
+    return(Garbre)
+            
     
     
 
