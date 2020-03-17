@@ -27,6 +27,17 @@ class Graphe():
             self.ar[depart][arrivee]=[]
         self.ar[depart][arrivee].append(val)
         self.nbA+=1
+        
+    def copie(self):
+        Gcopie=Graphe()
+        for sommet in self.so:
+            Gcopie.ajouterSommet(sommet)
+        for i in self.ar.keys():
+            Gcopie.ar[i]={}
+            for j in self.ar[i].keys():
+                Gcopie.ar[i][j]=list(self.ar[i][j])
+                Gcopie.nbA+=len(self.ar[i][j])
+        return(Gcopie)
 
         
 if __name__ == "__main__":
