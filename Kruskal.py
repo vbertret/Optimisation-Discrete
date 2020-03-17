@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from Graphe import *
+import random
 
 
 def minArrete(G):
@@ -19,16 +20,42 @@ def minArrete(G):
             del(dictArrete[index[0]][index[1]])
     return(listetrie)
     
-
-
+def detectionCycle(G):
+    color={s : "w" for s in G.so}
+    while(any([c=="w" for c in color.values()])):
+        rand=random.choice([sommet for sommet in G.so if color[sommet]=="w"])
+        pile=[rand]
+        while(len(pile)>=1):
+            s=pile.pop()
+            color[s]="g"
+            cpt=0
+            if(s in G.ar.keys()):
+                for j in G.ar[s].keys():
+                    if(color[j]=="g"):
+                        return(True)
+                    if(color[j]=="w"):
+                        pile.append(j)
+                        cpt+=1
+            if(cpt==0):
+                colorier_noir(G,s,color)
+    return(False)
+    
+def colorier_noir(G,sommet,color):
+    color[sommet]="b"
+    for i in G.ar.keys():
+        if sommet in G.ar[i].keys():
+            if(all([color[j]=="b" for j in G.ar[i].keys()])):
+                colorier_noir(G,i,color)
+    
+    
 
 if __name__ == "__main__":
     G1=Graphe()
     G1.ajouterSommet("A")
     G1.ajouterSommet("B")
     G1.ajouterArrete("A","B",2)
-    G1.ajouterArrete("A","C",3)
+    G1.ajouterArrete("B","C",3)
+    G1.ajouterArrete("C","A",3)
     G1.ajouterArrete("A","B",10)
-    G1.ajouterArrete("B","A",2)
-    liste=minArrete(G1)
-    print(liste)
+    print(detectionCycle(G1))
+    
