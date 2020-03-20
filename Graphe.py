@@ -2,11 +2,12 @@
 
 class Graphe():
     
-    def __init__(self):
+    def __init__(self,oriente=True):
         self.nbS = 0 #nombre de Sommet du Graphe
         self.nbA = 0 #nombre d'Arretes du Graphe
         self.so= [] #liste des différents sommets
         self.ar= {} #dictionnaire contenant les arretes
+        self.oriente=oriente
   
     #Methode pour rajoiuter un sommet au graphe      
     def ajouterSommet(self,nom,impress=1):
@@ -23,10 +24,18 @@ class Graphe():
         self.ajouterSommet(arrivee,0)
         if(depart not in self.ar.keys()):
             self.ar[depart]={}
+        if(self.oriente==False and arrivee not in self.ar.keys()):
+            self.ar[arrivee]={}
         if(arrivee not in self.ar[depart].keys()):
             self.ar[depart][arrivee]=[]
+        if(self.oriente ==False and depart not in self.ar[arrivee].keys()):
+            self.ar[arrivee][depart]=[]
+        
         self.ar[depart][arrivee].append(val)
         self.nbA+=1
+        if(self.oriente==False):
+            self.ar[arrivee][depart].append(val)
+            self.nbA+=1
       
     #Creation d'une copie d'un graphe avec une adresse mémoire différente   
     def copie(self):
@@ -56,13 +65,6 @@ class Graphe():
 
         
 if __name__ == "__main__":
-    G1=Graphe()
-    G1.ajouterSommet("A")
-    G1.ajouterSommet("B")
-    G1.ajouterArrete("A","B",2)
-    G1.ajouterArrete("A","C",3)
-    G1.ajouterArrete("A","B",10)
-    G1.ajouterArrete("B","A",2)
-    G1.enleverArrete("B","A",2)
+    print("Hello")
     
         
