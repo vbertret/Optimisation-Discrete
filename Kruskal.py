@@ -56,7 +56,6 @@ def Kruskal(G):
         arc=arretetrie[0]
         Garbre.ajouterArrete(arc[0],arc[1],arc[2])
         if(detectionCycle(Garbre)):
-            print("test")
             Garbre.enleverArrete(arc[0],arc[1],arc[2])
         del(arretetrie[0])
     return(Garbre)
@@ -65,30 +64,24 @@ def Kruskal(G):
     
 
 if __name__ == "__main__":
-    G1=Graphe()
+    G1=Graphe(False)
     G1.ajouterSommet("A")
     G1.ajouterSommet("B")
     
     G1.ajouterArrete("A","B",5)
-    G1.ajouterArrete("B","A",5)
-    
+   
     G1.ajouterArrete("A","E",4)
-    G1.ajouterArrete("E","A",4)
-    
+   
     G1.ajouterArrete("E","B",6)
-    G1.ajouterArrete("B","E",6)
-    
+   
     G1.ajouterArrete("E","D",2)
-    G1.ajouterArrete("D","E",2)
     
     G1.ajouterArrete("B","D",4)
-    G1.ajouterArrete("D","B",4)
-    
+
     G1.ajouterArrete("B","C",2)
-    G1.ajouterArrete("C","B",2)
     
     G1.ajouterArrete("D","C",3)
-    G1.ajouterArrete("C","D",3)
+    print(G1.ar)
     
     print(detectionCycle(G1))
     Garbre=Kruskal(G1)
