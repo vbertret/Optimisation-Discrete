@@ -6,7 +6,11 @@ def minArrete(G):
     listetrie=[]
     Gcopie=G.copie()
     dictArrete=Gcopie.ar
-    while(len(listetrie)<G.nbA):
+    if(G.oriente==False):
+        nbLoop=G.nbA*2
+    else:
+        nbLoop=G.nbA
+    while(len(listetrie)<nbLoop):
         mini=10^100
         for i in dictArrete.keys():
             for j in dictArrete[i].keys():
@@ -21,13 +25,14 @@ def minArrete(G):
     
 def Prim(G):
     Gfinal=Graphe()
-    Gfinal.ajouterSommet(random.choice(G.so))
+    choice=random.choice(G.so)
+    Gfinal.ajouterSommet(choice)
     arTrie=minArrete(G)
     for i in range(1,G.nbS):
         find=False
         j=0
         while j < len(arTrie) and find == False :
-            if( not ( arTrie[j][0] in Gfinal.so) and arTrie[j][1] in Gfinal.so):
+            if( ( arTrie[j][0] in Gfinal.so) and  not ( arTrie[j][1] in Gfinal.so ) ):
                 Gfinal.ajouterArrete(arTrie[j][0],arTrie[j][1],arTrie[j][2])
                 find=True
             j+=1
@@ -54,4 +59,5 @@ if __name__ == "__main__":
     print(G1.ar)
     print("################ALGOO#######################")
     Garbre=Prim(G1)
+    print(Garbre.so)
     print(Garbre.ar)    
