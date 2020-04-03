@@ -35,7 +35,6 @@ class Graphe():
         self.nbA+=1
         if(self.oriente==False):
             self.ar[arrivee][depart].append(val)
-            self.nbA+=1
       
     #Creation d'une copie d'un graphe avec une adresse mémoire différente   
     def copie(self):
@@ -60,11 +59,17 @@ class Graphe():
             del(self.ar[depart][arrivee])
         if(len(self.ar[depart])==0):
             del(self.ar[depart])
+        if(not self.oriente):
+            self.ar[arrivee][depart].remove(val)
+            if(len(self.ar[arrivee][depart])==0):
+                del(self.ar[arrivee][depart])
+            if(len(self.ar[arrivee])==0):
+                del(self.ar[arrivee])
         return(True)
         
 
         
 if __name__ == "__main__":
-    print("Hello")
+    print('test')
     
         
