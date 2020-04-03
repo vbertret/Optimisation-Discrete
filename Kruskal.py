@@ -7,7 +7,11 @@ def minArrete(G):
     listetrie=[]
     Gcopie=G.copie()
     dictArrete=Gcopie.ar
-    while(len(listetrie)<G.nbA):
+    if(G.oriente==False):
+        nbLoop=G.nbA*2
+    else:
+        nbLoop=G.nbA
+    while(len(listetrie)<nbLoop):
         mini=10^100
         for i in dictArrete.keys():
             for j in dictArrete[i].keys():
