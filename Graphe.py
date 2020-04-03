@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import turtle
 
 class Graphe():
     
@@ -67,9 +68,61 @@ class Graphe():
                 del(self.ar[arrivee])
         return(True)
         
+    def afficherGraphe(self):
+        wn = turtle.Screen()
+        wn.bgcolor("light green")
+        wn.title("Turtle")
+        skk = turtle.Turtle()
+        skk.up()
+        x=-300
+        y=200
+        location={}
+        for i in range(self.nbS):
+            skk.goto(x,y)
+            skk.down()
+            skk.write(self.so[i])
+            location[self.so[i]]=[x,y]
+            skk.up()
+            x+=299
+            if(x>300):
+                x=-300
+                y-=200
+        skk.color("red")
+        for key1 in self.ar.keys():
+            for key2 in self.ar[key1].keys():
+                pos1=location[key1]
+                skk.goto(pos1[0],pos1[1])
+                skk.down()
+                pos2=location[key2]
+                skk.goto(pos2[0],pos2[1])
+                skk.up()
+                pos3=[(pos1[0]+pos2[0])/2,(pos1[1]+pos2[1])/2+15]
+                skk.goto(pos3[0],pos3[1])
+                skk.write(self.ar[key1][key2][0])
+        turtle.hideturtle()
+        turtle.done()
+            
+        
 
         
 if __name__ == "__main__":
-    print('test')
+    G1=Graphe(True)
+    G1.ajouterSommet("A")
+    G1.ajouterSommet("B")
+    
+    G1.ajouterArrete("A","B",5)
+   
+    G1.ajouterArrete("A","E",4)
+   
+    G1.ajouterArrete("E","B",6)
+   
+    G1.ajouterArrete("E","D",2)
+    
+    G1.ajouterArrete("B","D",4)
+
+    G1.ajouterArrete("B","C",2)
+    
+    G1.ajouterArrete("D","C",3)
+    G1.afficherGraphe()
     
         
