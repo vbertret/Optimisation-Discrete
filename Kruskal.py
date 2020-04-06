@@ -52,7 +52,7 @@ def colorier_noir(G,sommet,color):
                 colorier_noir(G,i,color)
                 
 def Kruskal(G):
-    arretetrie=minArrete(G)
+    arretetrie=G.minArrete()
     Garbre=Graphe()
     for sommet in G.so:
         Garbre.ajouterSommet(sommet)
