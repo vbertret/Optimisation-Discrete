@@ -23,33 +23,38 @@ def minArrete(G):
         if(len(dictArrete[index[0]][index[1]])==0):
             del(dictArrete[index[0]][index[1]])
     return(listetrie)
-    
+ 
+    #Algo de detection de cycle p14
 def detectionCycle(G):
-    color={s : "w" for s in G.so}
+    color={s : "w" for s in G.so}  #Couleur des sommets(w : pas visite, g : visite, n visite avec que des successeurs noirs)
     while(any([c=="w" for c in color.values()])):
-        rand=random.choice([sommet for sommet in G.so if color[sommet]=="w"])
-        pile=[rand]
+        rand=random.choice([sommet for sommet in G.so if color[sommet]=="w"]) #On choisit un sommet aléatoire non traité
+        pile=[rand] #on le rajoute dans la pile
+        prec=""
         while(len(pile)>=1):
-            s=pile.pop()
+            s=pile.pop()  #on traite le premier sommet de la pile
             color[s]="g"
-            cpt=0
+            cpt=0 #compteur qui permet de déterminer les sommets qui n'ont pas de succeseurs(0 : pas de succeseur , >=1 plusieurs succeseurs)
             if(s in G.ar.keys()):
                 for j in G.ar[s].keys():
-                    if(color[j]=="g"):
+                    if(color[j]=="g" and not (j==prec)):   #si on rencontre un sommet gris, alors il y a un cycle
                         return(True)
-                    if(color[j]=="w"):
+                    if(color[j]=="w"):  #si le sommet n a pas encore été visite on l'ajoute à la pile
                         pile.append(j)
                         cpt+=1
+            prec=s
             if(cpt==0):
-                colorier_noir(G,s,color)
+                colorier_noir(G,s,color)  #si le sommet n'a plus de succeseur ...
     return(False)
     
+    #Fonction auxilaire de la fonction detection de cycle
 def colorier_noir(G,sommet,color):
-    color[sommet]="b"
+    color[sommet]="b"  #on colorie en noir, le sommet qui n'a pas de succeseur
     for i in G.ar.keys():
-        if sommet in G.ar[i].keys():
-            if(all([color[j]=="b" for j in G.ar[i].keys()])):
-                colorier_noir(G,i,color)
+        if(color[i] != "b"):
+            if sommet in G.ar[i].keys():
+                if(all([color[j]=="b" for j in G.ar[i].keys() if not (i  in G.ar[j].keys()) ])):
+                    colorier_noir(G,i,color) # si tous ces successeurs sont noirs, alors on le colorie en noir
                 
 def Kruskal(G):
     arretetrie=G.minArrete()
@@ -68,7 +73,17 @@ def Kruskal(G):
     
 
 if __name__ == "__main__":
+    
     G1=Graphe(False)
+    G1.ajouterArrete("A","B",5)
+    G1.ajouterArrete("B","C",5)
+    #G1.ajouterArrete("C","A",5)
+    print(detectionCycle(G1))
+    
+    
+    
+    
+    """G1=Graphe(False)
     G1.ajouterSommet("A")
     G1.ajouterSommet("B")
     
@@ -89,6 +104,6 @@ if __name__ == "__main__":
     
     print(detectionCycle(G1))
     Garbre=Kruskal(G1)
-    print(Garbre.ar)
+    print(Garbre.ar)"""
     
     
