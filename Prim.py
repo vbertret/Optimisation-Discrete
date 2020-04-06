@@ -2,9 +2,9 @@
 from Graphe import *
 import random
 
-    
+#Algorithme de Prim   
 def Prim(G):
-    Gfinal=Graphe()
+    Gfinal=Graphe(False)
     choice=random.choice(G.so)
     Gfinal.ajouterSommet(choice)
     arTrie=G.minArrete()
@@ -15,6 +15,7 @@ def Prim(G):
             if( ( arTrie[j][0] in Gfinal.so) and  not ( arTrie[j][1] in Gfinal.so ) ):
                 Gfinal.ajouterArrete(arTrie[j][0],arTrie[j][1],arTrie[j][2])
                 del(arTrie[j])
+                del(arTrie[arTrie.index([arTrie[j][1],arTrie[j][0],arTrie[j][2]])])
                 find=True
             j+=1
     return(Gfinal)
