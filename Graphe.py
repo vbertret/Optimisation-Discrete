@@ -48,6 +48,17 @@ class Graphe():
                 Gcopie.ar[i][j]=list(self.ar[i][j])
                 Gcopie.nbA+=len(self.ar[i][j])
         return(Gcopie)
+    
+    #Creation de la liste des arrêtes trié par ordre croissant    
+    def minArrete(self):
+        minimum=[]
+        for key1 in self.ar.keys():
+            for key2 in self.ar[key1].keys():
+                for val in self.ar[key1][key2]:
+                    minimum.append([key1,key2,val])
+        minimum = sorted(minimum, key= lambda x : x[2])
+        return(minimum)
+        
      
     #Supression d'une arrête
     def enleverArrete(self,depart,arrivee,val):
@@ -123,6 +134,6 @@ if __name__ == "__main__":
     G1.ajouterArrete("B","C",2)
     
     G1.ajouterArrete("D","C",3)
-    G1.afficherGraphe()
+    print(G1.minArrete())
     
         
