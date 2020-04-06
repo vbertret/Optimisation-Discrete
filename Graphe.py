@@ -8,46 +8,37 @@ class Graphe():
         self.nbA = 0 #nombre d'Arretes du Graphe
         self.so= [] #liste des différents sommets
         self.ar= {} #dictionnaire contenant les arretes
-        self.oriente=oriente
+        self.oriente=oriente #defintion du type de graphe
   
-    #Methode pour rajoiuter un sommet au graphe      
+    #Methode pour rajouter un sommet au graphe      
     def ajouterSommet(self,nom,impress=1):
-        if(nom not in self.so):
+        if(nom not in self.so):   #On teste si le nom du sommet n'existe pas deja
             self.nbS=self.nbS+1;
             self.so.append(nom)
+            self.ar[nom]={}
         else:
             if(impress==1):
                 print("Warning : Il existe deja un sommet avec ce nom !")
     
     #Methode pour rajouter une arrête au graphe
     def ajouterArrete(self,depart,arrivee,val):
-        self.ajouterSommet(depart,0)
+         #on ajoute les sommets du depart et de l'arrivée si il n'existent pas
+        self.ajouterSommet(depart,0)  
         self.ajouterSommet(arrivee,0)
-        if(depart not in self.ar.keys()):
-            self.ar[depart]={}
-        if(self.oriente==False and arrivee not in self.ar.keys()):
-            self.ar[arrivee]={}
-        if(arrivee not in self.ar[depart].keys()):
+        #if(depart not in self.ar.keys()):
+         #   self.ar[depart]={}
+        #if(self.oriente==False and arrivee not in self.ar.keys()):
+         #   self.ar[arrivee]={}
+        #Si l'arrivée n'est pas deja un sucesseur, on vient la rajouter dans le dictionnaire.
+        if(arrivee not in self.ar[depart].keys()): 
             self.ar[depart][arrivee]=[]
         if(self.oriente ==False and depart not in self.ar[arrivee].keys()):
             self.ar[arrivee][depart]=[]
-        
+        #On rajoute l'arc et on augmente le nombre d'arc de 1
         self.ar[depart][arrivee].append(val)
         self.nbA+=1
         if(self.oriente==False):
             self.ar[arrivee][depart].append(val)
-      
-    #Creation d'une copie d'un graphe avec une adresse mémoire différente   
-    def copie(self):
-        Gcopie=Graphe()
-        for sommet in self.so:
-            Gcopie.ajouterSommet(sommet)
-        for i in self.ar.keys():
-            Gcopie.ar[i]={}
-            for j in self.ar[i].keys():
-                Gcopie.ar[i][j]=list(self.ar[i][j])
-                Gcopie.nbA+=len(self.ar[i][j])
-        return(Gcopie)
     
     #Creation de la liste des arrêtes trié par ordre croissant    
     def minArrete(self):
@@ -69,14 +60,14 @@ class Graphe():
         self.nbA-=1
         if(len(self.ar[depart][arrivee])==0):
             del(self.ar[depart][arrivee])
-        if(len(self.ar[depart])==0):
-            del(self.ar[depart])
+        #if(len(self.ar[depart])==0):
+        #    del(self.ar[depart])
         if(not self.oriente):
             self.ar[arrivee][depart].remove(val)
             if(len(self.ar[arrivee][depart])==0):
                 del(self.ar[arrivee][depart])
-            if(len(self.ar[arrivee])==0):
-                del(self.ar[arrivee])
+         #   if(len(self.ar[arrivee])==0):
+         #       del(self.ar[arrivee])
         return(True)
         
     def afficherGraphe(self):
