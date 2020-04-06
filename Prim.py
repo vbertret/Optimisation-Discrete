@@ -2,38 +2,19 @@
 from Graphe import *
 import random
 
-def minArrete(G):
-    listetrie=[]
-    Gcopie=G.copie()
-    dictArrete=Gcopie.ar
-    if(G.oriente==False):
-        nbLoop=G.nbA*2
-    else:
-        nbLoop=G.nbA
-    while(len(listetrie)<nbLoop):
-        mini=10^100
-        for i in dictArrete.keys():
-            for j in dictArrete[i].keys():
-                if(min(dictArrete[i][j])<mini):
-                    mini=min(dictArrete[i][j])
-                    index=[i,j]
-        listetrie.append([index[0],index[1],mini])
-        dictArrete[index[0]][index[1]].remove(mini)
-        if(len(dictArrete[index[0]][index[1]])==0):
-            del(dictArrete[index[0]][index[1]])
-    return(listetrie)
     
 def Prim(G):
     Gfinal=Graphe()
     choice=random.choice(G.so)
     Gfinal.ajouterSommet(choice)
-    arTrie=minArrete(G)
+    arTrie=G.minArrete()
     for i in range(1,G.nbS):
         find=False
         j=0
         while j < len(arTrie) and find == False :
             if( ( arTrie[j][0] in Gfinal.so) and  not ( arTrie[j][1] in Gfinal.so ) ):
                 Gfinal.ajouterArrete(arTrie[j][0],arTrie[j][1],arTrie[j][2])
+                del(arTrie[j])
                 find=True
             j+=1
     return(Gfinal)
