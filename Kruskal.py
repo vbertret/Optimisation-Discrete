@@ -70,11 +70,11 @@ if __name__ == "__main__":
 
     G1.ajouterArrete("B","C",2)
     G1.ajouterArrete("D","C",3)
-    print(G1.ar)
-    print(G1.so)
+    
     
     print(detectionCycle(G1))
     Garbre=Kruskal(G1)
+    Garbre.afficherGraphe()
     print(Garbre.ar)
 
     
