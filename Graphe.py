@@ -103,6 +103,7 @@ class Graphe():
                 skk.write(self.ar[key1][key2][0])
         turtle.hideturtle()
         turtle.done()
+        turtle.reset()
             
         
 
@@ -125,6 +126,6 @@ if __name__ == "__main__":
     G1.ajouterArrete("B","C",2)
     
     G1.ajouterArrete("D","C",3)
-    print(G1.minArrete())
+    G1.afficherGraphe()
     
         
