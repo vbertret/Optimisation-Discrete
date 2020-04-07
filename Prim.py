@@ -15,7 +15,7 @@ def Prim(G):
             if( ( arTrie[j][0] in Gfinal.so) and  not ( arTrie[j][1] in Gfinal.so ) ):
                 Gfinal.ajouterArrete(arTrie[j][0],arTrie[j][1],arTrie[j][2])
                 del(arTrie[j])
-                del(arTrie[arTrie.index([arTrie[j][1],arTrie[j][0],arTrie[j][2]])])
+                #del(arTrie[arTrie.index([arTrie[j][1],arTrie[j][0],arTrie[j][2]])])
                 find=True
             j+=1
     return(Gfinal)
