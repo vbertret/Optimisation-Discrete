@@ -67,7 +67,7 @@ class Graphe():
 import random
 #%%
 
-def genGraphe(nbSom=6,nbAr=10,minVal=0,maxVal=8):
+def genGraphe(nbSom=6,minVal=0,maxVal=8):
     graphe=Graphe()
     for k in range(nbSom) :
         graphe.ajouterSommet(str(k))
@@ -82,7 +82,7 @@ def genGraphe(nbSom=6,nbAr=10,minVal=0,maxVal=8):
 A=genGraphe2()
 
 #%%
-B=genGraphe2(20,40,1,4)
+B=genGraphe2(20,1,4)
 
 
 
