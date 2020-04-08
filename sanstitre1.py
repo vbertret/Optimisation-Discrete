@@ -67,23 +67,22 @@ class Graphe():
 import random
 #%%
 
-def genGraphe(nbSom=6,nbAr=10,minVal=0,maxVal=8):
+def genGraphe(nbSom=6,minVal=0,maxVal=8):
     graphe=Graphe()
-    for i in range(nbSom) :
-        graphe.ajouterSommet(str(i))
+    for k in range(nbSom) :
+        graphe.ajouterSommet(str(k))
     
-    for j in range(nbAr) :
-        graphe.ajouterArrete(str(random.randint(0,nbSom-1)),str(random.randint(0,nbSom-1)),random.randint(minVal,maxVal))
+    for i in range(1,nbSom+1):
+        for j in range(i+1,nbSom+1):
+            graphe.ajouterArrete(str(i),str(j),random.randint(minVal,maxVal))
     
     return(graphe)
 
 #%%
-A=genGraphe()
-B=genGraphe(20,40,1,4)
+A=genGraphe2()
 
 #%%
-
-
+B=genGraphe2(20,1,4)
 
 
 
