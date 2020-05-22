@@ -1,0 +1,177 @@
+\* ACPM *\
+Minimize
+OBJ: 2.5 x_A_B + 2 x_A_E + 2.5 x_B_A + x_B_C + 2 x_B_D + 3 x_B_E + x_C_B
+ + 1.5 x_C_D + 2 x_D_B + 1.5 x_D_C + x_D_E + 2 x_E_A + 3 x_E_B + x_E_D
+Subject To
+_C1: x_A_B - x_B_A = 0
+_C10: x_D_E - x_E_D = 0
+_C11: - x_B_D + x_D_B = 0
+_C12: - x_D_E + x_E_D = 0
+_C13: - x_A_E + x_E_A = 0
+_C14: - x_B_E + x_E_B = 0
+_C15: - fBCB + fCBB + fCDB - fDCB = 0
+_C16: - fBDB - fCDB + fDBB + fDCB + fDEB - fEDB = 0
+_C17: - fAEB - fBEB - fDEB + fEAB + fEBB + fEDB = 0
+_C18: - fABC + fBAC + fBCC + fBDC + fBEC - fCBC - fDBC - fEBC = 0
+_C19: - fBDC - fCDC + fDBC + fDCC + fDEC - fEDC = 0
+_C2: x_A_E - x_E_A = 0
+_C20: - fAEC - fBEC - fDEC + fEAC + fEBC + fEDC = 0
+_C21: - fABD + fBAD + fBCD + fBDD + fBED - fCBD - fDBD - fEBD = 0
+_C22: - fBCD + fCBD + fCDD - fDCD = 0
+_C23: - fAED - fBED - fDED + fEAD + fEBD + fEDD = 0
+_C24: - fABE + fBAE + fBCE + fBDE + fBEE - fCBE - fDBE - fEBE = 0
+_C25: - fBCE + fCBE + fCDE - fDCE = 0
+_C26: - fBDE - fCDE + fDBE + fDCE + fDEE - fEDE = 0
+_C27: fABB + fAEB = 1
+_C28: fBAB + fEAB = 0
+_C29: fABC + fAEC = 1
+_C3: - x_A_B + x_B_A = 0
+_C30: fBAC + fEAC = 0
+_C31: fABD + fAED = 1
+_C32: fBAD + fEAD = 0
+_C33: fABE + fAEE = 1
+_C34: fBAE + fEAE = 0
+_C35: fABB + fCBB + fDBB + fEBB = 1
+_C36: fBAB + fBCB + fBDB + fBEB = 0
+_C37: fBCC + fDCC = 1
+_C38: fCBC + fCDC = 0
+_C39: fBDD + fCDD + fEDD = 1
+_C4: x_B_C - x_C_B = 0
+_C40: fDBD + fDCD + fDED = 0
+_C41: fAEE + fBEE + fDEE = 1
+_C42: fEAE + fEBE + fEDE = 0
+_C43: x_A_B + x_A_E + x_B_A + x_B_C + x_B_D + x_B_E + x_C_B + x_C_D + x_D_B
+ + x_D_C + x_D_E + x_E_A + x_E_B + x_E_D = 8
+_C44: fABB - x_A_B <= 0
+_C45: fAEB - x_A_E <= 0
+_C46: fBAB - x_B_A <= 0
+_C47: fBCB - x_B_C <= 0
+_C48: fBEB - x_B_E <= 0
+_C49: fBDB - x_B_D <= 0
+_C5: x_B_E - x_E_B = 0
+_C50: fCBB - x_C_B <= 0
+_C51: fCDB - x_C_D <= 0
+_C52: fDCB - x_D_C <= 0
+_C53: fDEB - x_D_E <= 0
+_C54: fDBB - x_D_B <= 0
+_C55: fEDB - x_E_D <= 0
+_C56: fEAB - x_E_A <= 0
+_C57: fEBB - x_E_B <= 0
+_C58: fABC - x_A_B <= 0
+_C59: fAEC - x_A_E <= 0
+_C6: x_B_D - x_D_B = 0
+_C60: fBAC - x_B_A <= 0
+_C61: fBCC - x_B_C <= 0
+_C62: fBEC - x_B_E <= 0
+_C63: fBDC - x_B_D <= 0
+_C64: fCBC - x_C_B <= 0
+_C65: fCDC - x_C_D <= 0
+_C66: fDCC - x_D_C <= 0
+_C67: fDEC - x_D_E <= 0
+_C68: fDBC - x_D_B <= 0
+_C69: fEDC - x_E_D <= 0
+_C7: - x_B_C + x_C_B = 0
+_C70: fEAC - x_E_A <= 0
+_C71: fEBC - x_E_B <= 0
+_C72: fABD - x_A_B <= 0
+_C73: fAED - x_A_E <= 0
+_C74: fBAD - x_B_A <= 0
+_C75: fBCD - x_B_C <= 0
+_C76: fBED - x_B_E <= 0
+_C77: fBDD - x_B_D <= 0
+_C78: fCBD - x_C_B <= 0
+_C79: fCDD - x_C_D <= 0
+_C8: x_C_D - x_D_C = 0
+_C80: fDCD - x_D_C <= 0
+_C81: fDED - x_D_E <= 0
+_C82: fDBD - x_D_B <= 0
+_C83: fEDD - x_E_D <= 0
+_C84: fEAD - x_E_A <= 0
+_C85: fEBD - x_E_B <= 0
+_C86: fABE - x_A_B <= 0
+_C87: fAEE - x_A_E <= 0
+_C88: fBAE - x_B_A <= 0
+_C89: fBCE - x_B_C <= 0
+_C9: - x_C_D + x_D_C = 0
+_C90: fBEE - x_B_E <= 0
+_C91: fBDE - x_B_D <= 0
+_C92: fCBE - x_C_B <= 0
+_C93: fCDE - x_C_D <= 0
+_C94: fDCE - x_D_C <= 0
+_C95: fDEE - x_D_E <= 0
+_C96: fDBE - x_D_B <= 0
+_C97: fEDE - x_E_D <= 0
+_C98: fEAE - x_E_A <= 0
+_C99: fEBE - x_E_B <= 0
+Binaries
+fABB
+fABC
+fABD
+fABE
+fAEB
+fAEC
+fAED
+fAEE
+fBAB
+fBAC
+fBAD
+fBAE
+fBCB
+fBCC
+fBCD
+fBCE
+fBDB
+fBDC
+fBDD
+fBDE
+fBEB
+fBEC
+fBED
+fBEE
+fCBB
+fCBC
+fCBD
+fCBE
+fCDB
+fCDC
+fCDD
+fCDE
+fDBB
+fDBC
+fDBD
+fDBE
+fDCB
+fDCC
+fDCD
+fDCE
+fDEB
+fDEC
+fDED
+fDEE
+fEAB
+fEAC
+fEAD
+fEAE
+fEBB
+fEBC
+fEBD
+fEBE
+fEDB
+fEDC
+fEDD
+fEDE
+x_A_B
+x_A_E
+x_B_A
+x_B_C
+x_B_D
+x_B_E
+x_C_B
+x_C_D
+x_D_B
+x_D_C
+x_D_E
+x_E_A
+x_E_B
+x_E_D
+End
